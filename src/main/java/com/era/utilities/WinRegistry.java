@@ -95,7 +95,7 @@ public class WinRegistry {
         if(WinRegistry.readString(LicenseWindowsRegModel.getHkey(), LicenseWindowsRegModel.getKey(), LicenseWindowsRegModel.getValueName())==null){
             
             //Encrypt the serie                        
-            final String serie = UtilityManager.getSingleton().getSecurityUtil().encryptString(serial);
+            final String serie = UtilitiesFactory.getSingleton().getSecurityUtil().encryptString(serial);
             
             //Create the key in the windows registry
             WinRegistry.createKey(LicenseWindowsRegModel.getHkey(), LicenseWindowsRegModel.getKey());
@@ -112,7 +112,7 @@ public class WinRegistry {
         if(WinRegistry.readString(LicenseWindowsRegModel.getHkey(), LicenseWindowsRegModel.getKey(), LicenseWindowsRegModel.getValueName())!=null){
             
             //Encrypt the serie
-            final String serie = UtilityManager.getSingleton().getSecurityUtil().encryptString(serial);
+            final String serie = UtilitiesFactory.getSingleton().getSecurityUtil().encryptString(serial);
             
             //Update the registry
             WinRegistry.writeStringValue(LicenseWindowsRegModel.getHkey(), LicenseWindowsRegModel.getKey(), LicenseWindowsRegModel.getValueName(), serie);
@@ -131,7 +131,7 @@ public class WinRegistry {
             String serie = WinRegistry.readString(LicenseWindowsRegModel.getHkey(), LicenseWindowsRegModel.getKey(), LicenseWindowsRegModel.getValueName());
             
             //Decrypt the serie
-            serie = UtilityManager.getSingleton().getSecurityUtil().decryptString(serie);
+            serie = UtilitiesFactory.getSingleton().getSecurityUtil().decryptString(serie);
             
             //Return the serie
             return serie;

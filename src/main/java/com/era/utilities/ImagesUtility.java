@@ -5,9 +5,6 @@
  */
 package com.era.utilities;
 
-import java.awt.Image;
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -26,6 +23,9 @@ public class ImagesUtility extends BaseUtility {
     private String appPath;
     
     
+    
+    protected ImagesUtility(){
+    }
     
     public void init(String appPath){
         this.appPath = appPath;

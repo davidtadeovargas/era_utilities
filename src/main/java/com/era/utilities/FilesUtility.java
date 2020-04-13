@@ -6,6 +6,7 @@
 package com.era.utilities;
 
 import java.io.File;
+import java.io.FileWriter;
 
 /**
  *
@@ -23,6 +24,23 @@ public class FilesUtility {
     public void createNewDir(final String pathDir){
         if(!new File(pathDir).exists())
             new File(pathDir).mkdir();
+    }
+    
+    public void createNewFile(final String pathFile) throws Exception {
+        if(!new File(pathFile).exists())
+            new File(pathFile).createNewFile();
+    }
+    
+    public void deleteFile(final String pathFile) throws Exception {
+        if(new File(pathFile).exists()){
+            new File(pathFile).delete();
+        }
+    }
+    
+    public void writeToExistingFile(final String pathFile, final String text) throws Exception{
+        try (FileWriter myWriter = new FileWriter(pathFile)) {
+            myWriter.write(text);
+        }
     }
     
     public void copyFile(final String pathFile, final String destinationPath) throws Exception {

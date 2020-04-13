@@ -21,6 +21,7 @@ public class UtilitiesFactory {
     private CertificatesUtility CertificatesUtility;
     private SessionUtility SessionUtility;
     private PathsUtility PathsUtility;
+    private IconsUtility IconsUtility;
     
     
     private UtilitiesFactory(){
@@ -94,6 +95,13 @@ public class UtilitiesFactory {
             PathsUtility = new PathsUtility();
         }
         return PathsUtility;
+    }
+    
+    public IconsUtility getIconsUtility(){
+        if(IconsUtility==null){
+            IconsUtility = new IconsUtility();
+        }
+        return IconsUtility;
     }
     
     @Override

@@ -24,7 +24,9 @@ public class PathsUtility {
 
     public void initPaths(String appPath,final String companyCode) {
         
-        this.appPath = appPath;
+        if(appPath!=null){
+            this.appPath = appPath;
+        }
         
         this.imagesPath = this.appPath + "\\Imagenes";
         this.logoPath = this.appPath + "\\Logotipo Empresa";

@@ -14,11 +14,31 @@ import java.io.FileWriter;
  */
 public class FilesUtility {
     
+    private final String LOG_FILE = "log.txt";
+    
     protected FilesUtility(){        
     }
     
     public boolean fileExists(final String filePath){        
         return new File(filePath).exists();
+    }
+    
+    public boolean logFileExists(){
+        return new File(LOG_FILE).exists();
+    }
+    
+    public boolean deleteLogFile(){
+        if(this.logFileExists()){
+            new File(LOG_FILE).delete();
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    public File getLogFile(){
+        return new File(LOG_FILE);
     }
     
     public void createNewDir(final String pathDir){

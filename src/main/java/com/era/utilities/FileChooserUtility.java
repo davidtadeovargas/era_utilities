@@ -53,6 +53,22 @@ public class FileChooserUtility {
         }            
     }
 
+    //Pops up a "Save File" file chooser dialog.
+    public void showSaveFolderDialog(final JFrame JFrame){
+    
+        final JFileChooser fc = new JFileChooser  ();
+        fc.setDialogTitle(title);
+        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        fc.setAcceptAllFileFilterUsed(false);
+        if(fc.showOpenDialog(JFrame)== JFileChooser.APPROVE_OPTION){
+            if(IApproveOpption!=null){
+                final String absolutePath = fc.getCurrentDirectory().getAbsolutePath();
+                final String fileName = fc.getSelectedFile().getName();
+                IApproveOpption.onApprove(absolutePath, fileName);
+            }
+        }            
+    }
+    
     public void setIApproveOpption(IApproveOpption IApproveOpption) {
         this.IApproveOpption = IApproveOpption;
     }

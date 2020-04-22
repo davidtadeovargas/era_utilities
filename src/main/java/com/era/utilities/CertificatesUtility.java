@@ -87,13 +87,13 @@ public class CertificatesUtility {
         
         //Create the certificates folder
         final FilesUtility FilesUtility = UtilitiesFactory.getSingleton().getFilesUtility();
-        if(FilesUtility.fileExists(rutaCarpeta)){
+        if(!FilesUtility.fileExists(rutaCarpeta)){
             FilesUtility.createNewDir(rutaCarpeta);
         }
         
         //Create the company code folder
         rutaCarpeta  += "\\" + companyCode;
-        if(FilesUtility.fileExists(rutaCarpeta)){
+        if(!FilesUtility.fileExists(rutaCarpeta)){
             FilesUtility.createNewDir(rutaCarpeta);
         }
                 
@@ -107,7 +107,7 @@ public class CertificatesUtility {
         FilesUtility.copyFile(certificateKeyPath, archivoKey);
         
         final CertificatesDataModel CertificatesDataModel = new CertificatesDataModel();
-        CertificatesDataModel.setCertificatePath(certificateKeyPath);
+        CertificatesDataModel.setCertificatePath(certificateFromPath);
         CertificatesDataModel.setCertificateKeyPath(certificateKeyPath);
         
         return CertificatesDataModel;

@@ -27,6 +27,10 @@ public class FilesUtility {
         return new File(LOG_FILE).exists();
     }
     
+    public String getCurrentWorkingDir(){
+        return System.getProperty("user.dir");
+    }
+    
     public boolean deleteLogFile(){
         if(this.logFileExists()){
             new File(LOG_FILE).delete();

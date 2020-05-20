@@ -18,6 +18,8 @@ public class SessionUtility {
     private User User;
     private String userLoggedTime;
     
+    
+    
     protected SessionUtility(){
     }
 

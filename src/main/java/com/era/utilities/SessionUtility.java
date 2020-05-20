@@ -49,4 +49,14 @@ public class SessionUtility {
         //Log the loggin of the user
         RepositoryFactory.getInstance().getUsersRepository().userLoggedToSystem(this.User.getStation());
     }
+    
+    public void deslogUserSession() throws Exception{
+        
+        //Save the current session        
+        final String currentTimeAndDate = UtilitiesFactory.getSingleton().getDateTimeUtility().getQuickCurrentTimeAndDate();            
+        this.userLoggedTime = currentTimeAndDate;
+        
+        //Log the loggin of the user
+        RepositoryFactory.getInstance().getUsersRepository().userDeloggedToSystem(this.User.getStation());
+    }
 }

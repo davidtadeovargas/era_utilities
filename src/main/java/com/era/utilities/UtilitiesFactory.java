@@ -23,7 +23,7 @@ public class UtilitiesFactory {
     private PathsUtility PathsUtility;
     private IconsUtility IconsUtility;
     private DateTimeUtility DateTimeUtility;
-    private UserSessionUtility UserSessionUtility;
+    private UsersUtility UsersUtility;
     
     
     private UtilitiesFactory(){
@@ -113,11 +113,11 @@ public class UtilitiesFactory {
         return DateTimeUtility;
     }
     
-    public UserSessionUtility getUserSessionUtility(){
-        if(UserSessionUtility == null){
-            UserSessionUtility = new UserSessionUtility();
+    public UsersUtility getUsersUtility(){
+        if(UsersUtility == null){
+            UsersUtility = new UsersUtility();
         }
-        return UserSessionUtility;
+        return UsersUtility;
     }
     
     @Override

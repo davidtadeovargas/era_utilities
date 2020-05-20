@@ -7,6 +7,7 @@ package com.era.utilities;
 
 import com.era.models.BasDats;
 import com.era.models.User;
+import com.era.repositories.RepositoryFactory;
 
 /**
  *
@@ -15,9 +16,8 @@ import com.era.models.User;
 public class SessionUtility {
     
     private BasDats BasDats;
-    private User User;
+    private User User = new User();    
     private String userLoggedTime;
-    
     
     
     protected SessionUtility(){
@@ -35,15 +35,18 @@ public class SessionUtility {
         return User;
     }
 
-    public void setUser(User User) {
-        this.User = User;
-    }
-
     public String getUserLoggedTime() {
         return userLoggedTime;
     }
-
-    public void setUserLoggedTime(String userLoggedTime) {
-        this.userLoggedTime = userLoggedTime;
+        
+    public void userInitSession(final User User) throws Exception{
+        
+        //Save the current session
+        this.User = User;
+        final String currentTimeAndDate = UtilitiesFactory.getSingleton().getDateTimeUtility().getQuickCurrentTimeAndDate();            
+        this.userLoggedTime = currentTimeAndDate;
+        
+        //Log the loggin of the user
+        RepositoryFactory.getInstance().getUsersRepository().userLoggedToSystem(this.User.getStation());
     }
 }

@@ -68,6 +68,11 @@
             <artifactId>era_logger</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>era_repositories</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
     
     <build>

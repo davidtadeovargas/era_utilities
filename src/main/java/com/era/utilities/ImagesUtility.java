@@ -5,6 +5,7 @@
  */
 package com.era.utilities;
 
+import java.awt.Desktop;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -50,6 +51,9 @@ public class ImagesUtility extends BaseUtility {
         saveImageToFile(fromUrl,prodPath);
     }
     
+    public void openImageInVisor(final String imagePath) throws IOException {
+        Desktop.getDesktop().open(new File(imagePath));
+    }
     
     private void saveImageToFile(String imageUrl, String destinationFile) throws IOException {
         
@@ -113,19 +117,28 @@ public class ImagesUtility extends BaseUtility {
     
     public void saveUserImage(final String user, final String fromPath) throws IOException {
         
-        String userPath = appPath + "\\Imagenes\\Usuarios\\" + user;
-        
+        //Users path should exist
+        String userPath = appPath + "\\Imagenes\\Usuarios";        
         if(!new File(userPath).exists()){
             new File(userPath).mkdir();
         }
         
-        userPath += "\\image.png";
+        //Users specific code path should exist
+        String userCodePath = userPath + "\\" + user;
+        if(!new File(userCodePath).exists()){
+            new File(userCodePath).mkdir();
+        }
+        
+        //Complete final path
+        userCodePath += "\\image.png";
                 
+        //The source image should exist
         if(!new File(fromPath).exists()){
             throw new FileNotFoundException();
         }
         
-        copyFileUsingStream(new File(fromPath), new File(userPath));
+        //Save the image
+        copyFileUsingStream(new File(fromPath), new File(userCodePath));
     }
     public void deleteUserImage(final String user) throws IOException {
         

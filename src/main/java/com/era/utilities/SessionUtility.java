@@ -47,7 +47,7 @@ public class SessionUtility {
         this.userLoggedTime = currentTimeAndDate;
         
         //Log the loggin of the user
-        RepositoryFactory.getInstance().getUsersRepository().userLoggedToSystem(this.User.getStation());
+        RepositoryFactory.getInstance().getUsersRepository().userLoggedToSystem(this.User.getCode());
     }
     
     public void deslogUserSession() throws Exception{
@@ -57,6 +57,6 @@ public class SessionUtility {
         this.userLoggedTime = currentTimeAndDate;
         
         //Log the loggin of the user
-        RepositoryFactory.getInstance().getUsersRepository().userDeloggedToSystem(this.User.getStation());
+        RepositoryFactory.getInstance().getUsersRepository().userDeloggedToSystem(this.User.getCode());
     }
 }

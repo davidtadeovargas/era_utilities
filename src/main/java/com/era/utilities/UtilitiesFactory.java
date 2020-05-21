@@ -24,7 +24,7 @@ public class UtilitiesFactory {
     private IconsUtility IconsUtility;
     private DateTimeUtility DateTimeUtility;
     private UsersUtility UsersUtility;
-    
+    private PrintersUtility PrintersUtility;
     
     private UtilitiesFactory(){
     }
@@ -118,6 +118,11 @@ public class UtilitiesFactory {
             UsersUtility = new UsersUtility();
         }
         return UsersUtility;
+    }
+    
+    public PrintersUtility getPrintersUtility(){
+        PrintersUtility = new PrintersUtility();
+        return PrintersUtility;
     }
     
     @Override

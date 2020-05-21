@@ -68,7 +68,7 @@ public class ImagesUtility extends BaseUtility {
         os.close();
     }
     
-    public void saveImage(final String productCode, final String fromPath) throws IOException {
+    public void saveProductImage(final String productCode, final String fromPath) throws IOException {
         
         String prodPath = appPath + "\\Imagenes\\Productos\\" + productCode;
         
@@ -83,8 +83,7 @@ public class ImagesUtility extends BaseUtility {
         }
         
         copyFileUsingStream(new File(fromPath), new File(prodPath));
-    }
-    
+    }    
     public void deleteProductImage(final String productCode) throws IOException {
         
         String prodPath = appPath + "\\Imagenes\\Productos\\" + productCode + "\\image.png";
@@ -94,8 +93,7 @@ public class ImagesUtility extends BaseUtility {
         }
         
         new File(prodPath).delete();                
-    }
-    
+    }    
     public boolean productImageExists(final String productCode) throws IOException {
         
         String prodPath = appPath + "\\Imagenes\\Productos\\" + productCode + "\\image.png";
@@ -106,6 +104,54 @@ public class ImagesUtility extends BaseUtility {
         else{
             return false;
         }
+    }
+    public String getProductImagePath(final String productCode){
+        
+        final String prodPath = appPath + "\\Imagenes\\Productos\\" + productCode + "\\image.png";        
+        return prodPath;
+    }
+    
+    public void saveUserImage(final String user, final String fromPath) throws IOException {
+        
+        String userPath = appPath + "\\Imagenes\\Usuarios\\" + user;
+        
+        if(!new File(userPath).exists()){
+            new File(userPath).mkdir();
+        }
+        
+        userPath += "\\image.png";
+                
+        if(!new File(fromPath).exists()){
+            throw new FileNotFoundException();
+        }
+        
+        copyFileUsingStream(new File(fromPath), new File(userPath));
+    }
+    public void deleteUserImage(final String user) throws IOException {
+        
+        String userPath = appPath + "\\Imagenes\\Usuarios\\" + user + "\\image.png";
+        
+        if(!new File(userPath).exists()){
+            throw new FileNotFoundException();
+        }
+        
+        new File(userPath).delete();                
+    }
+    public boolean usersImageExists(final String user) throws IOException {
+        
+        String userPath = appPath + "\\Imagenes\\Usuarios\\" + user + "\\image.png";
+        
+        if(new File(userPath).exists()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    public String getUserImagePath(final String user){
+        
+        final String userPath = appPath + "\\Imagenes\\Usuarios\\" + user + "\\image.png";        
+        return userPath;
     }
     
     private void copyFileUsingStream(File source, File dest) throws IOException {
@@ -124,12 +170,5 @@ public class ImagesUtility extends BaseUtility {
             is.close();
             os.close();
         }
-    }
-    
-    public String getProductImagePath(final String productCode){
-        
-        final String prodPath = appPath + "\\Imagenes\\Productos\\" + productCode + "\\image.png";
-        
-        return prodPath;
-    }
+    }        
 }

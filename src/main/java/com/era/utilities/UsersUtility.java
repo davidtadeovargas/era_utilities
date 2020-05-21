@@ -20,7 +20,9 @@ public class UsersUtility {
         final User User = UtilitiesFactory.getSingleton().getSessionUtility().getUser();
         final String userLoggedTime = UtilitiesFactory.getSingleton().getSessionUtility().getUserLoggedTime();
         
-        final String text = BasDats.getNom() + " Usuario: <" + User.getName() + "> V2.5.9 " + userLoggedTime;
+        final String basdatsNom = BasDats == null ? "": BasDats.getNom();
+        
+        final String text = basdatsNom + " Usuario: <" + User.getName() + "> V2.5.9 " + userLoggedTime;
         return text;
     }
 }

@@ -32,7 +32,7 @@ public class ImagesUtilityJUnitTest  {
             
             UtilitiesFactory.getSingleton().getImagesUtility().init("C:\\Users\\DavidTadeo.....Progr\\Documents\\Carpeta de trabajo\\easy-retail-campanita\\easy-retail-campanita");
             
-            UtilitiesFactory.getSingleton().getImagesUtility().saveImage("DANFRES15", "C:\\Users\\DavidTadeo.....Progr\\Downloads\\danone.jpg");
+            //UtilitiesFactory.getSingleton().getImagesUtility().saveImage("DANFRES15", "C:\\Users\\DavidTadeo.....Progr\\Downloads\\danone.jpg");
             
             Assertions.assertTrue(true);
             

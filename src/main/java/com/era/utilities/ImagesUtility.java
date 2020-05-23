@@ -5,7 +5,6 @@
  */
 package com.era.utilities;
 
-import java.awt.Desktop;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -52,7 +51,7 @@ public class ImagesUtility extends BaseUtility {
     }
     
     public void openImageInVisor(final String imagePath) throws IOException {
-        Desktop.getDesktop().open(new File(imagePath));
+        UtilitiesFactory.getSingleton().getDesktopUtility().open(imagePath);        
     }
     
     private void saveImageToFile(String imageUrl, String destinationFile) throws IOException {

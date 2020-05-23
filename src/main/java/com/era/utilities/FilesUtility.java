@@ -7,6 +7,7 @@ package com.era.utilities;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  *
@@ -41,8 +42,33 @@ public class FilesUtility {
         }
     }
     
+    public void createEmptyLogFile() throws IOException{
+        final boolean exists = this.logFileExists();
+        if(!exists){
+            new File(LOG_FILE).createNewFile();
+        }
+    }
+    
+    public boolean resetLogFile() throws IOException{
+        if(this.logFileExists()){
+            new File(LOG_FILE).delete();
+            
+            //Create the new one
+            createEmptyLogFile();
+            
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
     public File getLogFile(){
         return new File(LOG_FILE);
+    }
+    
+    public String getLogFilePath(){
+        return new File(LOG_FILE).getAbsolutePath();
     }
     
     public void createNewDir(final String pathDir){

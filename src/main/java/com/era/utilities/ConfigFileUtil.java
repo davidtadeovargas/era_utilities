@@ -20,23 +20,12 @@ import java.io.ObjectOutputStream;
 public class ConfigFileUtil {
     
     private static ConfigFileUtil ConfigFileUtil;
-    private String pathFileConf = "config.cfg";
+    private final String pathFileConf = com.era.Constants.CONFIG_FILE;
     
     
-    private ConfigFileUtil(){        
+    protected ConfigFileUtil(){        
     }
 
-    private ConfigFileUtil(String pathFileConf){
-        this.pathFileConf = pathFileConf;
-    }
-    
-    final public static ConfigFileUtil getSingleton(String pathFileConf){
-        if(ConfigFileUtil==null){
-            ConfigFileUtil = new ConfigFileUtil(pathFileConf);
-        }
-        return ConfigFileUtil;
-    }
-    
     final public static ConfigFileUtil getSingleton(){
         if(ConfigFileUtil==null){
             ConfigFileUtil = new ConfigFileUtil();
@@ -85,7 +74,9 @@ public class ConfigFileUtil {
         LoggerUtility.getSingleton().logInfo(ConfigFileUtil.class, "Encripting getDb: " + ConfigFileModel.getInstance());
         ConfigFileModel.setDb(UtilitiesFactory.getSingleton().getSecurityUtil().encryptString(ConfigFileModel.getDb()));
         LoggerUtility.getSingleton().logInfo(ConfigFileUtil.class, "Encripting getCashNumber: " + ConfigFileModel.getInstance());
-        ConfigFileModel.setCashNumber(UtilitiesFactory.getSingleton().getSecurityUtil().encryptString(ConfigFileModel.getCashNumber()));
+        ConfigFileModel.setCashNumber(UtilitiesFactory.getSingleton().getSecurityUtil().encryptString(ConfigFileModel.getCashNumber()));        
+        LoggerUtility.getSingleton().logInfo(ConfigFileUtil.class, "Encripting getCashNumber: " + ConfigFileModel.getSucursal());
+        ConfigFileModel.setSucursal(UtilitiesFactory.getSingleton().getSecurityUtil().encryptString(ConfigFileModel.getSucursal()));
         LoggerUtility.getSingleton().logInfo(ConfigFileUtil.class, "Encripting getPort: " + ConfigFileModel.getInstance());
         ConfigFileModel.setPort(UtilitiesFactory.getSingleton().getSecurityUtil().encryptString(ConfigFileModel.getPort()));
         LoggerUtility.getSingleton().logInfo(ConfigFileUtil.class, "Encripting getCompanyName: " + ConfigFileModel.getInstance());
@@ -100,6 +91,15 @@ public class ConfigFileUtil {
     
     public boolean configFileExists(){
         return new File(pathFileConf).exists();
+    }
+    
+    public String getConfigFilePath(){
+        if(this.configFileExists()){
+            return new File(pathFileConf).getAbsolutePath();
+        }
+        else{
+            return null;
+        }
     }
     
     public void deleteFile(){

@@ -25,6 +25,8 @@ public class UtilitiesFactory {
     private DateTimeUtility DateTimeUtility;
     private UsersUtility UsersUtility;
     private PrintersUtility PrintersUtility;
+    private DesktopUtility DesktopUtility;
+    private ConfigFileUtil ConfigFileUtil;
     
     private UtilitiesFactory(){
     }
@@ -119,10 +121,20 @@ public class UtilitiesFactory {
         }
         return UsersUtility;
     }
+
+    public DesktopUtility getDesktopUtility(){
+        DesktopUtility = new DesktopUtility();
+        return DesktopUtility;
+    }
     
     public PrintersUtility getPrintersUtility(){
         PrintersUtility = new PrintersUtility();
         return PrintersUtility;
+    }
+    
+    public ConfigFileUtil getConfigFileUtil(){
+        ConfigFileUtil = new ConfigFileUtil();
+        return ConfigFileUtil;
     }
     
     @Override

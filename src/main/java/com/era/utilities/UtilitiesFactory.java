@@ -27,6 +27,7 @@ public class UtilitiesFactory {
     private PrintersUtility PrintersUtility;
     private DesktopUtility DesktopUtility;
     private ConfigFileUtil ConfigFileUtil;
+    private SystemUtility SystemUtility;
     
     private UtilitiesFactory(){
     }
@@ -135,6 +136,11 @@ public class UtilitiesFactory {
     public ConfigFileUtil getConfigFileUtil(){
         ConfigFileUtil = new ConfigFileUtil();
         return ConfigFileUtil;
+    }
+    
+    public SystemUtility getSystemUtility(){
+        SystemUtility = new SystemUtility();
+        return SystemUtility;
     }
     
     @Override

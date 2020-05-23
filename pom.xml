@@ -73,6 +73,11 @@
             <artifactId>era_repositories</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.era.easyretail</groupId>
+            <artifactId>era_easyretail</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
     
     <build>

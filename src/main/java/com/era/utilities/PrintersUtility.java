@@ -5,6 +5,9 @@
  */
 package com.era.utilities;
 
+import com.era.datamodels.PrinterDataModel;
+import java.util.ArrayList;
+import java.util.List;
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
 
@@ -18,5 +21,17 @@ public class PrintersUtility {
         final PrintService se = PrintServiceLookup.lookupDefaultPrintService();
         final String defaultPrinter = se.getName();
         return defaultPrinter;
+    }
+    
+    public List<PrinterDataModel> getAllPrinters(){
+        
+        final List<PrinterDataModel> printers = new ArrayList<>();
+        PrintService[] ser = PrintServiceLookup.lookupPrintServices(null, null);        
+        for (PrintService service : ser) 
+        {
+            final PrinterDataModel PrinterDataModel = new PrinterDataModel();
+            PrinterDataModel.setName(service.getName());            
+        }
+        return printers;
     }
 }

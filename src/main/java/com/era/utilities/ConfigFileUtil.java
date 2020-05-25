@@ -21,7 +21,7 @@ public class ConfigFileUtil {
     
     private static ConfigFileUtil ConfigFileUtil;
     private final String pathFileConf = com.era.Constants.CONFIG_FILE;
-    
+    private ConfigFileModel ConfigFileModel;
     
     protected ConfigFileUtil(){        
     }
@@ -35,30 +35,31 @@ public class ConfigFileUtil {
     
     public ConfigFileModel getConfigFileModel() throws Exception {
         
-        //Read the file from disk
-        ConfigFileModel ConfigFileModel;
-        try(FileInputStream fileIn = new FileInputStream(pathFileConf); 
-            ObjectInputStream in = new ObjectInputStream(fileIn)){
-           ConfigFileModel = (ConfigFileModel)in.readObject();
+        if(ConfigFileModel == null){
+            
+            //Read the file from disk        
+            try(FileInputStream fileIn = new FileInputStream(pathFileConf); 
+                ObjectInputStream in = new ObjectInputStream(fileIn)){
+               ConfigFileModel = (ConfigFileModel)in.readObject();
+            }
+
+            //Dencrypt the data
+            LoggerUtility.getSingleton().logInfo(ConfigFileUtil.class, "Decrypting getInstance: " + ConfigFileModel.getInstance());        
+            ConfigFileModel.setInstance(UtilitiesFactory.getSingleton().getSecurityUtil().decryptString(ConfigFileModel.getInstance()));
+            LoggerUtility.getSingleton().logInfo(ConfigFileUtil.class, "Decrypting getUser: " + ConfigFileModel.getInstance());
+            ConfigFileModel.setUser(UtilitiesFactory.getSingleton().getSecurityUtil().decryptString(ConfigFileModel.getUser()));
+            LoggerUtility.getSingleton().logInfo(ConfigFileUtil.class, "Decrypting getPassword: " + ConfigFileModel.getInstance());
+            ConfigFileModel.setPassword(UtilitiesFactory.getSingleton().getSecurityUtil().decryptString(ConfigFileModel.getPassword()));
+            LoggerUtility.getSingleton().logInfo(ConfigFileUtil.class, "Decrypting getDb: " + ConfigFileModel.getInstance());
+            ConfigFileModel.setDb(UtilitiesFactory.getSingleton().getSecurityUtil().decryptString(ConfigFileModel.getDb()));
+            LoggerUtility.getSingleton().logInfo(ConfigFileUtil.class, "Decrypting getCashNumber: " + ConfigFileModel.getInstance());
+            ConfigFileModel.setCashNumber(UtilitiesFactory.getSingleton().getSecurityUtil().decryptString(ConfigFileModel.getCashNumber()));
+            LoggerUtility.getSingleton().logInfo(ConfigFileUtil.class, "Decrypting getPort: " + ConfigFileModel.getInstance());
+            ConfigFileModel.setPort(UtilitiesFactory.getSingleton().getSecurityUtil().decryptString(ConfigFileModel.getPort()));
+            LoggerUtility.getSingleton().logInfo(ConfigFileUtil.class, "Decrypting getCompanyName: " + ConfigFileModel.getInstance());
+            ConfigFileModel.setCompanyName(UtilitiesFactory.getSingleton().getSecurityUtil().decryptString(ConfigFileModel.getCompanyName()));
         }
-        
-        //Dencrypt the data
-        LoggerUtility.getSingleton().logInfo(ConfigFileUtil.class, "Decrypting getInstance: " + ConfigFileModel.getInstance());        
-        ConfigFileModel.setInstance(UtilitiesFactory.getSingleton().getSecurityUtil().decryptString(ConfigFileModel.getInstance()));
-        LoggerUtility.getSingleton().logInfo(ConfigFileUtil.class, "Decrypting getUser: " + ConfigFileModel.getInstance());
-        ConfigFileModel.setUser(UtilitiesFactory.getSingleton().getSecurityUtil().decryptString(ConfigFileModel.getUser()));
-        LoggerUtility.getSingleton().logInfo(ConfigFileUtil.class, "Decrypting getPassword: " + ConfigFileModel.getInstance());
-        ConfigFileModel.setPassword(UtilitiesFactory.getSingleton().getSecurityUtil().decryptString(ConfigFileModel.getPassword()));
-        LoggerUtility.getSingleton().logInfo(ConfigFileUtil.class, "Decrypting getDb: " + ConfigFileModel.getInstance());
-        ConfigFileModel.setDb(UtilitiesFactory.getSingleton().getSecurityUtil().decryptString(ConfigFileModel.getDb()));
-        LoggerUtility.getSingleton().logInfo(ConfigFileUtil.class, "Decrypting getCashNumber: " + ConfigFileModel.getInstance());
-        ConfigFileModel.setCashNumber(UtilitiesFactory.getSingleton().getSecurityUtil().decryptString(ConfigFileModel.getCashNumber()));
-        LoggerUtility.getSingleton().logInfo(ConfigFileUtil.class, "Decrypting getPort: " + ConfigFileModel.getInstance());
-        ConfigFileModel.setPort(UtilitiesFactory.getSingleton().getSecurityUtil().decryptString(ConfigFileModel.getPort()));
-        LoggerUtility.getSingleton().logInfo(ConfigFileUtil.class, "Decrypting getCompanyName: " + ConfigFileModel.getInstance());
-        ConfigFileModel.setCompanyName(UtilitiesFactory.getSingleton().getSecurityUtil().decryptString(ConfigFileModel.getCompanyName()));
-        
-        //Return the model
+                
         return ConfigFileModel;
     }
     

@@ -34,4 +34,12 @@ public class PrintersUtility {
         }
         return printers;
     }
+    
+    public void changeDefaultPrinter(final String printerName) throws Exception {
+        
+        final String sCmd = "RUNDLL32 PRINTUI.DLL,PrintUIEntry /y /n \"" + printerName + "\"";
+        final Runtime run = Runtime.getRuntime();
+        Process pr = run.exec(sCmd);
+        pr.waitFor();
+    }
 }

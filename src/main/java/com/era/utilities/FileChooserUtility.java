@@ -5,6 +5,9 @@
  */
 package com.era.utilities;
 
+import com.era.utilities.exceptions.InvalidFileExtensionException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -18,6 +21,7 @@ public class FileChooserUtility {
     private String title;
     private boolean acceptAllFileFilterUsed;
     private IApproveOpption IApproveOpption;
+    private final List<String> validExtensions = new ArrayList<>();
     
     
     
@@ -26,6 +30,10 @@ public class FileChooserUtility {
 
     public void setTitle(String title) {        
         this.title = title;
+    }
+    
+    public void addValidExtension(final String validExtension){
+        this.validExtensions.add(validExtension);
     }
     
     public void setPropertyTitle(String title) throws Exception {
@@ -39,15 +47,33 @@ public class FileChooserUtility {
     }
     
     //Pops up a "Save File" file chooser dialog.
-    public void showSaveDialog(final JFrame JFrame){
+    public void showSaveDialog(final JFrame JFrame) throws Exception {
     
         final JFileChooser fc = new JFileChooser  ();
         fc.setDialogTitle(title);
         fc.setAcceptAllFileFilterUsed(acceptAllFileFilterUsed);
         if(fc.showSaveDialog(JFrame)== JFileChooser.APPROVE_OPTION){
             if(IApproveOpption!=null){
+                
                 final String absolutePath = fc.getCurrentDirectory().getAbsolutePath();
                 final String fileName = fc.getSelectedFile().getName();
+                
+                //Check the valid extensions of the selected file
+                boolean valid = false;
+                for(String validExtension:validExtensions){
+                    if(fileName.endsWith(validExtension)){
+                        valid = true;
+                        break;
+                    }
+                }
+                if(!valid){
+                    throw new InvalidFileExtensionException();
+                }
+                
+                //Clear the valid extensions
+                validExtensions.clear();
+                
+                //Call back for the user
                 IApproveOpption.onApprove(absolutePath, fileName);
             }
         }            

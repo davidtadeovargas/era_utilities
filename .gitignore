@@ -7,3 +7,4 @@ target/classes/com/era/utilities/FileChooserUtility$IApproveOpption.class
 target/era_utilities 1.0-SNAPSHOT.jar
 target/maven-archiver/pom.properties
 target/test-classes/.netbeans_automatic_build
+*.class

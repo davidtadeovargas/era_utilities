@@ -13,6 +13,7 @@ public class CustomerExcelRowModel {
     
     private String companyCode;
     private String name;
+    private String rfc;
     private String phone;
     private String lada;    
     private String cellphone;
@@ -146,4 +147,12 @@ public class CustomerExcelRowModel {
     public void setLada(String lada) {
         this.lada = lada;
     }        
+
+    public String getRfc() {
+        return rfc;
+    }
+
+    public void setRfc(String rfc) {
+        this.rfc = rfc;
+    }
 }

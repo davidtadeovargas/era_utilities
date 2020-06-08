@@ -5,6 +5,7 @@
  */
 package com.era.utilities;
 
+import com.era.utilities.exceptions.FilenameDontMatchException;
 import com.era.utilities.exceptions.InvalidFileExtensionException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ public class FileChooserUtility {
     private boolean acceptAllFileFilterUsed;
     private IApproveOpption IApproveOpption;
     private final List<String> validExtensions = new ArrayList<>();
+    private String fileNameMatch;
     
     
     
@@ -30,6 +32,10 @@ public class FileChooserUtility {
 
     public void setTitle(String title) {        
         this.title = title;
+    }
+
+    public void setFileNameMatch(String fileNameMatch) {
+        this.fileNameMatch = fileNameMatch;
     }
     
     public void addValidExtension(final String validExtension){
@@ -57,6 +63,15 @@ public class FileChooserUtility {
                 
                 final String absolutePath = fc.getCurrentDirectory().getAbsolutePath();
                 final String fileName = fc.getSelectedFile().getName();
+                
+                //If user needs to match file name
+                if(fileNameMatch != null){
+                    
+                    //If dont match
+                    if(fileNameMatch.compareTo(fileName)!=0){
+                        throw new FilenameDontMatchException();
+                    }
+                }
                 
                 //Check the valid extensions of the selected file
                 boolean valid = false;

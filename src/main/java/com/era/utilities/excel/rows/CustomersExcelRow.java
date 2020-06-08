@@ -39,42 +39,45 @@ public class CustomersExcelRow extends BaseExcelRow {
                         CustomerExcelRowModel.setName(Cell.getStringCellValue());
                     }
                     else if(cellNumber == 2){
-                        CustomerExcelRowModel.setPhone(Cell.getStringCellValue());
+                        CustomerExcelRowModel.setRfc(Cell.getStringCellValue());
                     }
                     else if(cellNumber == 3){
-                        CustomerExcelRowModel.setLada(Cell.getStringCellValue());
+                        CustomerExcelRowModel.setPhone(Cell.getStringCellValue());
                     }
                     else if(cellNumber == 4){
-                        CustomerExcelRowModel.setCellphone(Cell.getStringCellValue());
+                        CustomerExcelRowModel.setLada(Cell.getStringCellValue());
                     }
                     else if(cellNumber == 5){
-                        CustomerExcelRowModel.setEmail(Cell.getStringCellValue());
+                        CustomerExcelRowModel.setCellphone(Cell.getStringCellValue());
                     }
                     else if(cellNumber == 6){
-                        CustomerExcelRowModel.setCity(Cell.getStringCellValue());
+                        CustomerExcelRowModel.setEmail(Cell.getStringCellValue());
                     }
                     else if(cellNumber == 7){
-                        CustomerExcelRowModel.setEstate(Cell.getStringCellValue());
+                        CustomerExcelRowModel.setCity(Cell.getStringCellValue());
                     }
                     else if(cellNumber == 8){
-                        CustomerExcelRowModel.setCountry(Cell.getStringCellValue());
+                        CustomerExcelRowModel.setEstate(Cell.getStringCellValue());
                     }
                     else if(cellNumber == 9){
-                        CustomerExcelRowModel.setStreet(Cell.getStringCellValue());
+                        CustomerExcelRowModel.setCountry(Cell.getStringCellValue());
                     }
                     else if(cellNumber == 10){
-                        CustomerExcelRowModel.setColony(Cell.getStringCellValue());
+                        CustomerExcelRowModel.setStreet(Cell.getStringCellValue());
                     }
                     else if(cellNumber == 11){
-                        CustomerExcelRowModel.setInteriorNumber(Cell.getStringCellValue());
+                        CustomerExcelRowModel.setColony(Cell.getStringCellValue());
                     }
                     else if(cellNumber == 12){
-                        CustomerExcelRowModel.setExternalNumber(Cell.getStringCellValue());
+                        CustomerExcelRowModel.setInteriorNumber(Cell.getStringCellValue());
                     }
                     else if(cellNumber == 13){
-                        CustomerExcelRowModel.setWebpage(Cell.getStringCellValue());
+                        CustomerExcelRowModel.setExternalNumber(Cell.getStringCellValue());
                     }
                     else if(cellNumber == 14){
+                        CustomerExcelRowModel.setWebpage(Cell.getStringCellValue());
+                    }
+                    else if(cellNumber == 15){
                         CustomerExcelRowModel.setObservations(Cell.getStringCellValue());
                     }
                     

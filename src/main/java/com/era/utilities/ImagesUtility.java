@@ -5,6 +5,7 @@
  */
 package com.era.utilities;
 
+import com.era.utilities.exceptions.InvalidFileExtensionException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -71,6 +72,64 @@ public class ImagesUtility extends BaseUtility {
         os.close();
     }
     
+    public String getFTecnicalProductPath(final String productCode) throws Exception {
+        
+        final String path = appPath + "\\FTecnica\\" + productCode;
+        
+        //Get the path to the technical file
+        final String pathToFile = UtilitiesFactory.getSingleton().getFilesUtility().getFirstFilePathFromPath(path);
+        
+        //Return the path
+        return pathToFile;
+    }
+    public void saveFTecnicaProduct(final String productCode, final String fromPath) throws Exception {
+        
+        String prodPath = appPath + "\\FTecnica\\" + productCode;
+        
+        if(!new File(prodPath).exists()){
+            new File(prodPath).mkdir();
+        }
+                
+        if(fromPath.endsWith(".pdf")){
+            prodPath += "\\ftecnica.pdf";
+        }
+        else if(fromPath.endsWith(".docx")){
+            prodPath += "\\ftecnica.docx";
+        }
+        else{
+            throw new InvalidFileExtensionException();
+        }
+                
+        if(!new File(fromPath).exists()){
+            throw new FileNotFoundException();
+        }
+        
+        copyFileUsingStream(new File(fromPath), new File(prodPath));
+    }
+    public void deleteFTechnicalProduct(final String productCode) throws Exception {
+        
+        //Path to the technical product file folder
+        final String path = appPath + "\\FTecnica\\" + productCode;
+        
+        //Get the path to the technical file
+        final String pathToFile = UtilitiesFactory.getSingleton().getFilesUtility().getFirstFilePathFromPath(path);
+        
+        if(!new File(pathToFile).exists()){
+            throw new FileNotFoundException();
+        }
+        
+        new File(pathToFile).delete();                
+    }
+    public boolean FTechnicalProductExists(final String productCode) throws Exception {
+        
+        final String path = appPath + "\\FTecnica\\" + productCode;
+        
+        //Get the path to the technical file
+        final String pathToFile = UtilitiesFactory.getSingleton().getFilesUtility().getFirstFilePathFromPath(path);
+        
+        return new File(pathToFile).exists();
+    }
+    
     public void saveProductImage(final String productCode, final String fromPath) throws IOException {
         
         String prodPath = appPath + "\\Imagenes\\Productos\\" + productCode;
@@ -86,7 +145,7 @@ public class ImagesUtility extends BaseUtility {
         }
         
         copyFileUsingStream(new File(fromPath), new File(prodPath));
-    }    
+    }
     public void deleteProductImage(final String productCode) throws IOException {
         
         String prodPath = appPath + "\\Imagenes\\Productos\\" + productCode + "\\image.png";
@@ -96,7 +155,7 @@ public class ImagesUtility extends BaseUtility {
         }
         
         new File(prodPath).delete();                
-    }    
+    }
     public boolean productImageExists(final String productCode) throws IOException {
         
         String prodPath = appPath + "\\Imagenes\\Productos\\" + productCode + "\\image.png";
@@ -110,7 +169,7 @@ public class ImagesUtility extends BaseUtility {
     }
     public String getProductImagePath(final String productCode){
         
-        final String prodPath = appPath + "\\Imagenes\\Productos\\" + productCode + "\\image.png";        
+        final String prodPath = appPath + "\\Imagenes\\Productos\\" + productCode + "\\image.png";
         return prodPath;
     }
     

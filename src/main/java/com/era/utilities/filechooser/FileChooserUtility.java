@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.era.utilities;
+package com.era.utilities.filechooser;
 
+import com.era.utilities.UtilitiesFactory;
 import com.era.utilities.exceptions.FilenameDontMatchException;
 import com.era.utilities.exceptions.InvalidFileExtensionException;
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class FileChooserUtility {
     
     
     
-    protected FileChooserUtility(){        
+    public FileChooserUtility(){        
     }
 
     public void setTitle(String title) {        

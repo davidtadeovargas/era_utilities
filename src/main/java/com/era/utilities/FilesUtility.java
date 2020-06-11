@@ -9,10 +9,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.stream.Stream;
 
 /**
  *
@@ -90,6 +88,21 @@ public class FilesUtility {
     public void createNewFile(final String pathFile) throws Exception {
         if(!new File(pathFile).exists())
             new File(pathFile).createNewFile();
+    }
+    
+    public String getFirstFilePathFromPath(final String path) throws Exception {
+        final File dir = new File(path);
+        final File[] directoryListing = dir.listFiles();
+        if (directoryListing != null) {
+            for(File child : directoryListing) {
+                if(child.isDirectory() || child.isHidden()){
+                    continue;
+                }
+                return child.getAbsolutePath();
+            }
+        }
+        
+        return null;
     }
     
     public void deleteFile(final String pathFile) throws Exception {

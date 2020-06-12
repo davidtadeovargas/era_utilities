@@ -14,4 +14,6 @@ public class Constants {
     public static final String CONFIG_FILE = "config.cfg";
     public static final String JAR_NAME = "era_easyretail-1.0-SNAPSHOT.jar";
     public static final String PATH_TO_JAR = "target";
+    final public static String FILENAME_EXCEL_IMPORT_SUPPLIERS = "Catalogo de proveedores.xlsx";
+    final public static String FILENAME_EXCEL_IMPORT_PRODUCTS = "Catalogo de productos.xlsx";
 }

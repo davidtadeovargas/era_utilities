@@ -5,6 +5,7 @@
  */
 package com.era.utilities;
 
+import com.era.utilities.filechooser.ExcelFileChooserUtility;
 import com.era.utilities.filechooser.FTecnicaFileChooserUtility;
 import com.era.utilities.filechooser.FileChooserUtility;
 import com.era.utilities.filechooser.ImageFileChooserUtility;
@@ -20,7 +21,7 @@ public class UtilitiesFactory {
     private SecurityUtil SecurityUtil;
     private GeneralsUtility GeneralsUtility;
     private FileChooserUtility FileChooserUtility;
-    private ImageFileChooserUtility ImageFileChooserUtility;
+    private ImageFileChooserUtility ImageFileChooserUtility;    
     private DialogPropertiesUitlity DialogPropertiesUitlity;
     private FilesUtility FilesUtility;
     private CertificatesUtility CertificatesUtility;
@@ -56,6 +57,9 @@ public class UtilitiesFactory {
             ImageFileChooserUtility = new ImageFileChooserUtility();
         }
         return ImageFileChooserUtility;
+    }
+    public ExcelFileChooserUtility getExcelFileChooserUtility(){
+        return new ExcelFileChooserUtility();
     }
     public SecurityUtil getSecurityUtil(){
         if(SecurityUtil==null){

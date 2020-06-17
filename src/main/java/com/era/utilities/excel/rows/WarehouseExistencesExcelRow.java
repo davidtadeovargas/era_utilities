@@ -47,6 +47,7 @@ public class WarehouseExistencesExcelRow extends BaseExcelRow {
                     break;
                     
                 case CELL_TYPE_NUMERIC:
+                    WarehouseExistencesExcelRowModel.setExistence(Cell.getNumericCellValue());
                     break;
             }
             

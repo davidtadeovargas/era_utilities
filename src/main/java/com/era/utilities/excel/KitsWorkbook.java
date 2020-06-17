@@ -1,0 +1,19 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.era.utilities.excel;
+
+import com.era.utilities.excel.rows.KitExcelRow;
+
+/**
+ *
+ * @author PC
+ */
+public class KitsWorkbook extends Workbook{
+
+    public KitsWorkbook() {
+        super(new KitExcelRow());
+    }
+}

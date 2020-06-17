@@ -16,4 +16,5 @@ public class Constants {
     public static final String PATH_TO_JAR = "target";
     final public static String FILENAME_EXCEL_IMPORT_SUPPLIERS = "Catalogo de proveedores.xlsx";
     final public static String FILENAME_EXCEL_IMPORT_PRODUCTS = "Catalogo de productos.xlsx";
+    final public static String FILENAME_EXCEL_IMPORT_KITS = "Catalogo de kits.xlsx";
 }

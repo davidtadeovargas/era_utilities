@@ -41,6 +41,10 @@ public class NumbersUtility extends BaseUtility {
         
         //Get the text
         String text = value.replace(",", "").replace("$", "");
+        
+        if(text.isEmpty()){
+            text = "0";
+        }                
 
         //Return the value
         return text;

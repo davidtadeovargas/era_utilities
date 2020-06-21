@@ -7,6 +7,8 @@ package com.era.utilities;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -21,5 +23,12 @@ public class DateTimeUtility {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
         LocalDateTime now = LocalDateTime.now();  
         return dtf.format(now);
+    }
+    
+    public Calendar getCurrentDateInCalendar(){
+        final Date currentTime = new java.util.Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(currentTime);
+        return calendar;
     }
 }

@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -28,13 +29,28 @@ public class ImagesUtility extends BaseUtility {
     protected ImagesUtility(){
     }
     
+    public ImageIcon scaleImage(ImageIcon ImageIcon, int w, int h){
+        
+        //Scale image
+        java.awt.Image im = ImageIcon.getImage(); 
+        java.awt.Image newimg = im.getScaledInstance( w, h,  java.awt.Image.SCALE_SMOOTH );  
+        ImageIcon = new ImageIcon(newimg);
+        
+        //Return imageicon scaled
+        return ImageIcon;
+    }
+    
     public void init(String appPath){
         this.appPath = appPath;
         
-        appPath += "\\Imagenes\\Productos";
+        final String productsPath = appPath + "\\Imagenes\\Productos";
+        if(!new File(productsPath).exists()){
+            new File(productsPath).mkdir();
+        }
         
-        if(!new File(appPath).exists()){
-            new File(appPath).mkdir();
+        final String linesPath = appPath + "\\Imagenes\\Lineas";
+        if(!new File(linesPath).exists()){
+            new File(linesPath).mkdir();
         }
     }
     
@@ -130,6 +146,23 @@ public class ImagesUtility extends BaseUtility {
         return new File(pathToFile).exists();
     }
     
+    public void saveLineImage(final String lineCode, final String fromPath) throws IOException {
+        
+        String prodPath = appPath + "\\Imagenes\\Lineas\\" + lineCode;
+        
+        if(!new File(prodPath).exists()){
+            new File(prodPath).mkdir();
+        }
+        
+        prodPath += "\\image.png";
+                
+        if(!new File(fromPath).exists()){
+            throw new FileNotFoundException();
+        }
+        
+        copyFileUsingStream(new File(fromPath), new File(prodPath));
+    }
+    
     public void saveProductImage(final String productCode, final String fromPath) throws IOException {
         
         String prodPath = appPath + "\\Imagenes\\Productos\\" + productCode;
@@ -156,6 +189,16 @@ public class ImagesUtility extends BaseUtility {
         
         new File(prodPath).delete();                
     }
+    public void deleteLineImage(final String lineCode) throws IOException {
+        
+        String prodPath = appPath + "\\Imagenes\\Lineas\\" + lineCode + "\\image.png";
+        
+        if(!new File(prodPath).exists()){
+            throw new FileNotFoundException();
+        }
+        
+        new File(prodPath).delete();                
+    }
     public boolean productImageExists(final String productCode) throws IOException {
         
         String prodPath = appPath + "\\Imagenes\\Productos\\" + productCode + "\\image.png";
@@ -167,10 +210,37 @@ public class ImagesUtility extends BaseUtility {
             return false;
         }
     }
+    
+    public boolean lineImageExists(final String lineCode) throws IOException {
+        
+        String prodPath = appPath + "\\Imagenes\\Lineas\\" + lineCode + "\\image.png";
+        
+        if(new File(prodPath).exists()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    public ImageIcon getProductImagePathImageIcon(final String productCode){
+        return new ImageIcon(getProductImagePath(productCode));
+    }
+        
     public String getProductImagePath(final String productCode){
         
         final String prodPath = appPath + "\\Imagenes\\Productos\\" + productCode + "\\image.png";
         return prodPath;
+    }
+   
+    public String getLineImagePath(final String lineCode){
+        
+        final String prodPath = appPath + "\\Imagenes\\Lineas\\" + lineCode + "\\image.png";
+        return prodPath;
+    }
+    
+    public ImageIcon getLineImagePathImageIcon(final String lineCode){
+        return new ImageIcon(getLineImagePath(lineCode));        
     }
     
     public void saveUserImage(final String user, final String fromPath) throws IOException {

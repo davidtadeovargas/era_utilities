@@ -21,6 +21,14 @@ public class DesktopUtility {
     protected DesktopUtility(){               
     }
     
+    public void openCalc() throws Exception {
+        Runtime.getRuntime().exec("calc");
+    }
+    
+    public void openKeyboard() throws Exception {
+        Runtime.getRuntime().exec("cmd /c C:\\Windows\\System32\\osk.exe");
+    }
+    
     public void edit(final String filePath) throws IOException {
         
         if(Desktop.isDesktopSupported()){

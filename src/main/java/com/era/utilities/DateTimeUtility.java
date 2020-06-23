@@ -31,4 +31,9 @@ public class DateTimeUtility {
         calendar.setTime(currentTime);
         return calendar;
     }
+    
+    public Date getCurrentDate(){
+        final Date currentTime = new java.util.Date();        
+        return currentTime;
+    }
 }

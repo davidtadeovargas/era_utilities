@@ -82,6 +82,9 @@ public class FileChooserUtility {
                         break;
                     }
                 }
+                if(validExtensions.isEmpty()){
+                    valid = true;
+                }
                 if(!valid){
                     throw new InvalidFileExtensionException();
                 }

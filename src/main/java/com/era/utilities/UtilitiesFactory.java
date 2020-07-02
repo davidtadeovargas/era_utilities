@@ -53,9 +53,7 @@ public class UtilitiesFactory {
     }
     
     public ImageFileChooserUtility getImageFileChooserUtility(){
-        if(ImageFileChooserUtility==null){
-            ImageFileChooserUtility = new ImageFileChooserUtility();
-        }
+        ImageFileChooserUtility = new ImageFileChooserUtility();        
         return ImageFileChooserUtility;
     }
     public ExcelFileChooserUtility getExcelFileChooserUtility(){

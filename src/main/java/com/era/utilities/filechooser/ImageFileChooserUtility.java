@@ -12,10 +12,6 @@ package com.era.utilities.filechooser;
 public class ImageFileChooserUtility extends FileChooserUtility{
     
     public ImageFileChooserUtility(){
-        
-        addValidExtension("jpeg");
-        addValidExtension("jpg");
-        addValidExtension("bmp");
-        addValidExtension("gif");
+        addValidImageExtension();
     }
 }

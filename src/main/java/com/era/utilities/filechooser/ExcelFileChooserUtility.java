@@ -12,8 +12,6 @@ package com.era.utilities.filechooser;
 public class ExcelFileChooserUtility extends FileChooserUtility{
     
     public ExcelFileChooserUtility(){
-        
-        addValidExtension("xlsx");
-        addValidExtension("xls");
+        addValidExcelExtension();        
     }
 }

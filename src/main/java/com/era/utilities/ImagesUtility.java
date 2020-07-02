@@ -6,6 +6,7 @@
 package com.era.utilities;
 
 import com.era.utilities.exceptions.InvalidFileExtensionException;
+import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -27,6 +28,12 @@ public class ImagesUtility extends BaseUtility {
     
     
     protected ImagesUtility(){
+    }
+    
+    public ImageIcon getImageIconScaledFromPath(final String pathImage, int w, int h){
+        
+        final ImageIcon ImageIcon = new ImageIcon(new ImageIcon(pathImage).getImage().getScaledInstance(w, h, Image.SCALE_DEFAULT));
+        return ImageIcon;
     }
     
     public ImageIcon scaleImage(ImageIcon ImageIcon, int w, int h){
@@ -288,6 +295,11 @@ public class ImagesUtility extends BaseUtility {
         else{
             return false;
         }
+    }
+    public ImageIcon getUserImagePathImageIcon(final String productCode){
+        final ImageIcon ImageIcon = new ImageIcon(getUserImagePath(productCode));
+        ImageIcon.getImage().flush();
+        return ImageIcon;
     }
     public String getUserImagePath(final String user){
         

@@ -25,8 +25,7 @@ public class UtilitiesFactory {
     private DialogPropertiesUitlity DialogPropertiesUitlity;
     private FilesUtility FilesUtility;
     private CertificatesUtility CertificatesUtility;
-    private SessionUtility SessionUtility;
-    private PathsUtility PathsUtility;
+    private SessionUtility SessionUtility;    
     private IconsUtility IconsUtility;
     private DateTimeUtility DateTimeUtility;
     private UsersUtility UsersUtility;
@@ -110,13 +109,6 @@ public class UtilitiesFactory {
             SessionUtility = new SessionUtility();
         }
         return SessionUtility;
-    }
-    
-    public PathsUtility getPathsUtility(){
-        if(PathsUtility==null){
-            PathsUtility = new PathsUtility();
-        }
-        return PathsUtility;
     }
     
     public IconsUtility getIconsUtility(){

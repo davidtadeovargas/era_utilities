@@ -24,7 +24,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 @TestMethodOrder(OrderAnnotation.class)
 public class ImagesUtilityJUnitTest  {
     
-    @Test
+    /*@Test
     @Order(1)
     public void createConfigFileTest() {
                        
@@ -68,5 +68,5 @@ public class ImagesUtilityJUnitTest  {
             
             LoggerUtility.getSingleton().logInfo(ConfigUtilJUnitTest.class, "Failed");
         }            
-    }
+    }*/
 }

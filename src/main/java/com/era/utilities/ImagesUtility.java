@@ -54,8 +54,8 @@ public class ImagesUtility extends BaseUtility {
         return ImageIcon;
     }
     
-    public void init(String appPath, final String companyCode){
-        this.appPath = appPath;
+    public void init(final String companyCode){
+        this.appPath = System.getProperty("user.dir");
         
         imagesPath = appPath + "\\Imagenes";
         if(!new File(imagesPath).exists()){

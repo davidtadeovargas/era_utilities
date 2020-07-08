@@ -30,6 +30,7 @@ public class UtilitiesFactory {
     private DateTimeUtility DateTimeUtility;
     private UsersUtility UsersUtility;
     private PrintersUtility PrintersUtility;
+    private EmailUtility EmailUtility;
     private DesktopUtility DesktopUtility;
     private ConfigFileUtil ConfigFileUtil;
     private SystemUtility SystemUtility;
@@ -150,6 +151,11 @@ public class UtilitiesFactory {
     public SystemUtility getSystemUtility(){
         SystemUtility = new SystemUtility();
         return SystemUtility;
+    }
+    
+    public EmailUtility getEmailUtility(){
+        EmailUtility = new EmailUtility();
+        return EmailUtility;
     }
     
     public NumbersUtility getNumbersUtility(){

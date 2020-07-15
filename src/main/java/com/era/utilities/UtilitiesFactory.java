@@ -33,6 +33,7 @@ public class UtilitiesFactory {
     private EmailUtility EmailUtility;
     private DesktopUtility DesktopUtility;
     private ConfigFileUtil ConfigFileUtil;
+    private GenericExceptionUtil GenericExceptionUtil;
     private SystemUtility SystemUtility;
     
     private UtilitiesFactory(){
@@ -160,6 +161,10 @@ public class UtilitiesFactory {
     
     public NumbersUtility getNumbersUtility(){
         return new NumbersUtility();
+    }
+    
+    public GenericExceptionUtil getGenericExceptionUtil(){
+        return new GenericExceptionUtil();
     }
     
     @Override

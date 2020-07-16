@@ -5,10 +5,7 @@
  */
 package com.era.utilities;
 
-import com.era.easyretail.Start;
 import com.era.logger.LoggerUtility;
-import java.io.File;
-import java.io.FileNotFoundException;
 
 /**
  *

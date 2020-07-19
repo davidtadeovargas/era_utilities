@@ -32,6 +32,17 @@ public class ImagesUtility extends BaseUtility {
     private String logoCompanyPath;
     private String usersPath;
     
+    private String remsPath;
+    private String cortxPath;
+    private String cortzPath;
+    private String notcPath;
+    private String invoicesPath;
+    private String ticketsPath;
+    private String cancelsPath;
+    private String devsPath;
+    private String devspPath;
+    private String acusesPath;
+    
     
     
     protected ImagesUtility(){
@@ -56,6 +67,96 @@ public class ImagesUtility extends BaseUtility {
     
     public void init(final String companyCode){
         this.appPath = System.getProperty("user.dir");
+        
+        remsPath = appPath + "\\Remisiones";
+        if(!new File(remsPath).exists()){
+            new File(remsPath).mkdir();
+        }
+        remsPath = remsPath + "\\" + companyCode;
+        if(!new File(remsPath).exists()){
+            new File(remsPath).mkdir();
+        }
+        
+        cortxPath = appPath + "\\Cortes X";
+        if(!new File(cortxPath).exists()){
+            new File(cortxPath).mkdir();
+        }
+        cortxPath = cortxPath + "\\" + companyCode;
+        if(!new File(cortxPath).exists()){
+            new File(cortxPath).mkdir();
+        }
+        
+        cortzPath = appPath + "\\Cortes Z";
+        if(!new File(cortzPath).exists()){
+            new File(cortzPath).mkdir();
+        }
+        cortzPath = cortzPath + "\\" + companyCode;
+        if(!new File(cortzPath).exists()){
+            new File(cortzPath).mkdir();
+        }
+        
+        notcPath = appPath + "\\Notas credito";
+        if(!new File(notcPath).exists()){
+            new File(notcPath).mkdir();
+        }
+        notcPath = notcPath + "\\" + companyCode;
+        if(!new File(notcPath).exists()){
+            new File(notcPath).mkdir();
+        }
+        
+        invoicesPath = appPath + "\\Facturas";
+        if(!new File(invoicesPath).exists()){
+            new File(invoicesPath).mkdir();
+        }
+        invoicesPath = invoicesPath + "\\" + companyCode;
+        if(!new File(invoicesPath).exists()){
+            new File(invoicesPath).mkdir();
+        }
+        
+        ticketsPath = appPath + "\\Tickets";
+        if(!new File(ticketsPath).exists()){
+            new File(ticketsPath).mkdir();
+        }
+        ticketsPath = ticketsPath + "\\" + companyCode;
+        if(!new File(ticketsPath).exists()){
+            new File(ticketsPath).mkdir();
+        }
+        
+        cancelsPath = appPath + "\\Cancelados";
+        if(!new File(cancelsPath).exists()){
+            new File(cancelsPath).mkdir();
+        }
+        cancelsPath = cancelsPath + "\\" + companyCode;
+        if(!new File(cancelsPath).exists()){
+            new File(cancelsPath).mkdir();
+        }
+        
+        devsPath = appPath + "\\Devoluciones";
+        if(!new File(devsPath).exists()){
+            new File(devsPath).mkdir();
+        }
+        devsPath = devsPath + "\\" + companyCode;
+        if(!new File(devsPath).exists()){
+            new File(devsPath).mkdir();
+        }
+        
+        devspPath = appPath + "\\Devoluciones Parciales";
+        if(!new File(devspPath).exists()){
+            new File(devspPath).mkdir();
+        }
+        devspPath = devspPath + "\\" + companyCode;
+        if(!new File(devspPath).exists()){
+            new File(devspPath).mkdir();
+        }
+        
+        acusesPath = appPath + "\\Acuses";
+        if(!new File(acusesPath).exists()){
+            new File(acusesPath).mkdir();
+        }
+        acusesPath = acusesPath + "\\" + companyCode;
+        if(!new File(acusesPath).exists()){
+            new File(acusesPath).mkdir();
+        }
         
         imagesPath = appPath + "\\Imagenes";
         if(!new File(imagesPath).exists()){
@@ -113,6 +214,38 @@ public class ImagesUtility extends BaseUtility {
         saveImageToFile(fromUrl,prodPath);
     }
         
+    
+    public void openRemsPath() throws IOException {
+        UtilitiesFactory.getSingleton().getDesktopUtility().open(remsPath);
+    }
+    public void openCortxPath() throws IOException {
+        UtilitiesFactory.getSingleton().getDesktopUtility().open(cortxPath);
+    }
+    public void openCortzPath() throws IOException {
+        UtilitiesFactory.getSingleton().getDesktopUtility().open(cortzPath);
+    }
+    public void openNotcPath() throws IOException {
+        UtilitiesFactory.getSingleton().getDesktopUtility().open(notcPath);
+    }
+    public void openInvoicesPath() throws IOException {
+        UtilitiesFactory.getSingleton().getDesktopUtility().open(invoicesPath);
+    }
+    public void openTicketsPath() throws IOException {
+        UtilitiesFactory.getSingleton().getDesktopUtility().open(ticketsPath);
+    }
+    public void openCancelsPath() throws IOException {
+        UtilitiesFactory.getSingleton().getDesktopUtility().open(cancelsPath);
+    }
+    public void openDevsPath() throws IOException {
+        UtilitiesFactory.getSingleton().getDesktopUtility().open(devsPath);
+    }
+    public void openDevspPath() throws IOException {
+        UtilitiesFactory.getSingleton().getDesktopUtility().open(devspPath);
+    }
+    public void openAcusesPath() throws IOException {
+        UtilitiesFactory.getSingleton().getDesktopUtility().open(acusesPath);
+    }
+    
     public void openImageInVisor(final String imagePath) throws IOException {
         UtilitiesFactory.getSingleton().getDesktopUtility().open(imagePath);        
     }

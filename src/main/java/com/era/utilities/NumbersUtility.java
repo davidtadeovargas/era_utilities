@@ -6,6 +6,7 @@
 package com.era.utilities;
 
 import com.era.utilities.exceptions.EmptyStringException;
+import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -14,6 +15,10 @@ import java.util.Locale;
  * @author PC
  */
 public class NumbersUtility extends BaseUtility {
+    
+    public String toMoneyFormat(final BigDecimal value) throws Exception {
+        return toMoneyFormat(String.valueOf(value));
+    }
     
     public String toMoneyFormat(final String value) throws Exception {
         

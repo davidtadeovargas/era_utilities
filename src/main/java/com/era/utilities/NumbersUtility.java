@@ -20,6 +20,10 @@ public class NumbersUtility extends BaseUtility {
         return toMoneyFormat(String.valueOf(value));
     }
     
+    public String toMoneyFormat(final float value) throws Exception {
+        return toMoneyFormat(String.valueOf(value));
+    }
+        
     public String toMoneyFormat(final String value) throws Exception {
         
         //Get the text

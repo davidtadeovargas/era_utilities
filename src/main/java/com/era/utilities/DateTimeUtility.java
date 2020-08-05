@@ -5,7 +5,6 @@
  */
 package com.era.utilities;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -36,6 +35,12 @@ public class DateTimeUtility {
     public Date getCurrentDate(){
         final Date currentTime = new java.util.Date();        
         return currentTime;
+    }
+    
+    public String getCurrentDateWithoutHour(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDateTime now = LocalDateTime.now();  
+        return dtf.format(now);
     }
     
     public Date getDatePlusDays(final int days) throws Exception {

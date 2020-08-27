@@ -30,7 +30,8 @@ public class PrintersUtility {
         for (PrintService service : ser) 
         {
             final PrinterDataModel PrinterDataModel = new PrinterDataModel();
-            PrinterDataModel.setName(service.getName());            
+            PrinterDataModel.setName(service.getName());
+            printers.add(PrinterDataModel);
         }
         return printers;
     }
@@ -41,5 +42,15 @@ public class PrintersUtility {
         final Runtime run = Runtime.getRuntime();
         Process pr = run.exec(sCmd);
         pr.waitFor();
+    }
+    
+    public void changeDefaultUserTicketPrinter() throws Exception {
+        final String defaultUserTicketPrinter = UtilitiesFactory.getSingleton().getSessionUtility().getUser().getTicketPrinter();
+        this.changeDefaultPrinter(defaultUserTicketPrinter);
+    }
+    
+    public boolean userTicketPrinterExists() throws Exception {
+        final String defaultUserTicketPrinter = UtilitiesFactory.getSingleton().getSessionUtility().getUser().getTicketPrinter();
+        return defaultUserTicketPrinter!=null;
     }
 }

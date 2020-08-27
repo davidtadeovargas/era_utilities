@@ -213,7 +213,44 @@ public class ImagesUtility extends BaseUtility {
         
         saveImageToFile(fromUrl,prodPath);
     }
+
+    public String getAppPath() {
+        return appPath;
+    }
+
+    public String getRemsPath() {
+        return remsPath;
+    }
+
+    public String getCortxPath() {
+        return cortxPath;
+    }
+
+    public String getCortzPath() {
+        return cortzPath;
+    }
+
+    public String getNotcPath() {
+        return notcPath;
+    }
+
+    public String getInvoicesPath() {
+        return invoicesPath;
+    }
+
+    public String getTicketsPath() {
+        return ticketsPath;
+    }
+
+    public String getCancelsPath() {
+        return cancelsPath;
+    }
+
+    public String getAcusesPath() {
+        return acusesPath;
+    }
         
+    
     
     public void openRemsPath() throws IOException {
         UtilitiesFactory.getSingleton().getDesktopUtility().open(remsPath);

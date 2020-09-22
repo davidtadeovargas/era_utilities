@@ -390,7 +390,7 @@ public class ImagesUtility extends BaseUtility {
         copyFileUsingStream(new File(fromPath), new File(prodPath));
     }
     
-    public String getCompanyLogoImagePath(final String companyCode){
+    public String getCompanyLogoImagePath(){
         
         final String companyImagePath = logoCompanyPath + "\\image.png";        
         return companyImagePath;

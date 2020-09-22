@@ -115,6 +115,23 @@ public class FileChooserUtility {
             }
         };
         FileFilters.add(FileFilter);
+        
+        addValidExtension("png");
+        FileFilter = new FileFilter() {
+            @Override
+            public boolean accept(File f) {
+                if (f.isDirectory()) {
+                    return true;
+                } else {
+                    return f.getName().toLowerCase().endsWith(".png");
+                }
+            }
+            @Override
+            public String getDescription() {
+                return "png (*.png)";
+            }
+        };
+        FileFilters.add(FileFilter);
     }
     
     public void addValidExcelExtension(){

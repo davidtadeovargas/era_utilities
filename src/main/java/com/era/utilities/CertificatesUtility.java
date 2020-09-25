@@ -8,13 +8,11 @@ package com.era.utilities;
 import com.era.datamodels.CertificatesDataModel;
 import java.io.ByteArrayInputStream;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.cert.CertificateFactory;
 import java.security.cert.X509Certificate;
 import java.util.Date;
-import sun.security.pkcs.PKCS8Key;
 
 /**
  *

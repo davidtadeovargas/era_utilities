@@ -30,6 +30,7 @@ public class ImagesUtility extends BaseUtility {
     private String linesPath;
     private String ftechnicalPath;
     private String logoCompanyPath;
+    private String logoLocalPath;
     private String usersPath;
     
     private String remsPath;
@@ -195,6 +196,8 @@ public class ImagesUtility extends BaseUtility {
             new File(logoCompanyPath).mkdir();
         }
         
+        logoLocalPath = appPath + "\\Imagenes Sistema";        
+                
         usersPath = imagesPath + "\\Usuarios";
         if(!new File(usersPath).exists()){
             new File(usersPath).mkdir();
@@ -383,17 +386,33 @@ public class ImagesUtility extends BaseUtility {
         copyFileUsingStream(new File(fromPath), new File(prodPath));
     }
     
-    public void saveCompanyLogoImage(final String companyCode, final String fromPath) throws IOException {
+    public void saveCompanyLogoImage(final String fromPath) throws IOException {
         
-        String prodPath = logoCompanyPath + "\\image.png";
+        String filePath = logoCompanyPath + "\\image.png";
+        copyFileUsingStream(new File(fromPath), new File(filePath));
+    }
+    public void removeCompanyLogoImage() throws Exception {
         
-        copyFileUsingStream(new File(fromPath), new File(prodPath));
+        String filePath = logoCompanyPath + "\\image.png";
+        UtilitiesFactory.getSingleton().getFilesUtility().deleteFile(filePath);
     }
     
     public String getCompanyLogoImagePath(){
         
         final String companyImagePath = logoCompanyPath + "\\image.png";        
         return companyImagePath;
+    }
+    
+    public String getLocalLogoImagePath(){
+        
+        final String path = logoLocalPath + "\\logo_era.png";        
+        return path;
+    }
+    
+    public boolean companyLogoImageExists(){
+        
+        final String companyImagePath = logoCompanyPath + "\\image.png";
+        return UtilitiesFactory.getSingleton().getFilesUtility().fileExists(companyImagePath);
     }
     
     public void saveProductImage(final String productCode, final String fromPath) throws IOException {

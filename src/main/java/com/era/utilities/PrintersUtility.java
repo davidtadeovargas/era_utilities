@@ -49,8 +49,17 @@ public class PrintersUtility {
         this.changeDefaultPrinter(defaultUserTicketPrinter);
     }
     
+    public void changeDefaultUserInvoicePrinter() throws Exception {
+        final String defaultUserInvoicePrinter = UtilitiesFactory.getSingleton().getSessionUtility().getUser().getInvoicePrinter();
+        this.changeDefaultPrinter(defaultUserInvoicePrinter);
+    }
+    
     public boolean userTicketPrinterExists() throws Exception {
         final String defaultUserTicketPrinter = UtilitiesFactory.getSingleton().getSessionUtility().getUser().getTicketPrinter();
         return defaultUserTicketPrinter!=null;
+    }
+    public boolean userInvoicePrinterExists() throws Exception {
+        final String defaultUserInvoicePrinter = UtilitiesFactory.getSingleton().getSessionUtility().getUser().getInvoicePrinter();
+        return defaultUserInvoicePrinter!=null;
     }
 }

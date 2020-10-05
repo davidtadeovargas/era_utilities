@@ -37,4 +37,12 @@ public class DialogPropertiesUitlity {
         
         return Properties;
     }
+    
+    public String getString(final String property) throws Exception {
+        
+        final Properties Properties = this.getProperties();
+        final String cadena = Properties.getProperty(property);
+        
+        return cadena;
+    }
 }

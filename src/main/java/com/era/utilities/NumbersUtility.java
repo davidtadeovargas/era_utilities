@@ -117,6 +117,19 @@ public class NumbersUtility extends BaseUtility {
         return text;
     }
     
+    public BigDecimal fromMoneyFormatToBigDecimal(final String value) throws Exception {
+        
+        //Get the text
+        String text = value.replace(",", "").replace("$", "");
+        
+        if(text.isEmpty()){
+            text = "0";
+        }                
+
+        //Return the value
+        return new BigDecimal(text);
+    }
+    
     /*Obtiene los millones*/
     private String getMill(String numero) 
     { 

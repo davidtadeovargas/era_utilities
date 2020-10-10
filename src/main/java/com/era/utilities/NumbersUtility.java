@@ -28,13 +28,17 @@ public class NumbersUtility extends BaseUtility {
         return toMoneyFormat(String.valueOf(value));
     }
     
-    public String convertNumberToStringRepresentation(String numero, final String simbol, final String coinCode, final boolean monedaNacional, final boolean mayusculas) {
+    public String convertNumberToStringRepresentation(String numero, final String simbol, String coinCode, final boolean monedaNacional, final boolean mayusculas) {
         
         String terminacion = "";
         if(monedaNacional){
             terminacion = "M.N.";
         }
 
+        if(coinCode==null){
+            coinCode = "PESOS";
+        }
+        
         BigDecimal num = new BigDecimal(numero.replace("$","").replace(",",""));
         numero = num.setScale(2,BigDecimal.ROUND_HALF_EVEN).toString();
         

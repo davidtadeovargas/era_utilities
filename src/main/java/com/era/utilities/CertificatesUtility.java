@@ -20,9 +20,6 @@ import java.util.Date;
  */
 public class CertificatesUtility {
     
-    private String error;
-    
-    
     protected CertificatesUtility(){        
     }
     
@@ -44,21 +41,27 @@ public class CertificatesUtility {
         return xRes.getNotAfter();
     }
     
-    public boolean validateCertificate( final String certificatePath, 
+    public String validateCertificate( final String certificatePath, 
                                         final String certificateKeyPath,
                                         final String password) throws Exception{
         
         final Date Date = this.getDate(certificatePath);
         
+        String error = null;
         Date dtNow    = new java.util.Date();
         if(Date.compareTo(dtNow)<0){
-            this.error = "errors_certdate";
-            return false;
+            error = "errors_certdate";
+            return error;
         }
         
         final PrivateKey PrivateKey = getPrivateKey(certificateKeyPath, password);
-        return PrivateKey!=null;
+        if(PrivateKey==null){
+            error = "errors_certprivatekey";
+        }
+        
+        return error;
     }
+    
     
     private PrivateKey getPrivateKey(final String certificateKeyPath, final String password) throws Exception {
         

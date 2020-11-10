@@ -36,6 +36,19 @@ public class PrintersUtility {
         return printers;
     }
     
+    public PrinterDataModel getFirstFromAllPrinters(){
+        
+        final List<PrinterDataModel> printers = new ArrayList<>();
+        PrintService[] ser = PrintServiceLookup.lookupPrintServices(null, null);        
+        for (PrintService service : ser) 
+        {
+            final PrinterDataModel PrinterDataModel = new PrinterDataModel();
+            PrinterDataModel.setName(service.getName());
+            printers.add(PrinterDataModel);
+        }
+        return printers.size() > 0 ? printers.get(0) : null;
+    }
+    
     public void changeDefaultPrinter(final String printerName) throws Exception {
         
         final String sCmd = "RUNDLL32 PRINTUI.DLL,PrintUIEntry /y /n \"" + printerName + "\"";
